@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { 
+      width: 320px; 
+      font-family: 'Segoe UI', sans-serif; 
+      padding: 0; 
+      margin: 0; 
+      background-color: #f3f2f1;
+    }
+    
+    /* --- HEADER --- */
+    .header { 
+      background-color: #29A992; /* Magic Green */
+      padding: 15px 20px; 
+      text-align: center; 
+      color: white; 
+      
+      /* Flex Column para empilhar Logo e Slogan */
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+      justify-content: center;
+      gap: 5px; 
+    }
+    
+    /* Container to keep Logo and Name on the same line */
+    .header-branding {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+    
+    .header img { 
+      width: 28px; 
+      height: 28px; 
+      display: block; 
+    }
+
+    /* Explanatory Text (Slogan) */
+    .header-desc {
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.9;
+      line-height: 1.3;
+      max-width: 95%;
+    }
+
+    .container { 
+      padding: 15px; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 12px; 
+    }
+    
+    .card { 
+      background: white; 
+      padding: 0; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+      overflow: hidden;
+    }
+    
+    .section-title {
+      font-size: 11px;
+      color: #666;
+      margin-left: 5px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    /* --- BUTTON DESIGN --- */
+    button {
+      width: 100%; 
+      padding: 15px; 
+      border: none;
+      background: #fff; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      display: flex;
+      align-items: flex-start; 
+      text-align: left;
+      gap: 15px;
+      position: relative;
+    }
+
+    button:hover { 
+      background-color: #29A992; 
+    }
+    
+    button:hover .btn-title { color: white; }
+    button:hover .btn-desc { display: none; } 
+    button:hover .btn-warning { display: block; } 
+    button:hover .status-icon { display: none; }
+    button:hover .btn-image { background-color: rgba(255,255,255,0.2); }
+
+    .img-hover { display: none; } 
+    button:hover .img-normal { display: none; } 
+    button:hover .img-hover { display: block; } 
+
+    .btn-image {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #e6f7f5;
+      border-radius: 8px;
+      flex-shrink: 0; 
+      transition: background-color 0.3s;
+    }
+
+    .btn-image img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .btn-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0; 
+    }
+
+    .btn-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 4px;
+      transition: color 0.3s;
+    }
+
+    .btn-desc {
+      font-size: 11px;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .btn-warning {
+        display: none;
+        font-size: 11px;
+        color: #333;
+        line-height: 1.4;
+        background: #ffffff;
+        padding: 8px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-top: 4px;
+    }
+    
+    .btn-warning strong { color: #d9534f; }
+
+    .status-icon { 
+      font-size: 18px; 
+      color: #29A992;
+      align-self: center;
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      text-align: center;
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 15px;
+      border-top: 1px solid #e0e0e0;
+      padding-top: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .email-link {
+      color: #888;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+      margin-bottom: 5px;
+    }
+    .email-link:hover {
+      color: #29A992;
+      text-decoration: underline;
+    }
+
+    /* DONATION TEXT */
+    .donate-text {
+      margin-top: 10px;
+      margin-bottom: 2px;
+      font-size: 11px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    /* PayPal Donation Button (White) */
+    .donate-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      
+      background-color: #ffffff; 
+      border: 1px solid #e0e0e0;
+      
+      color: #2c2e2f !important;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: bold !important;
+      font-size: 12px;
+      text-decoration: none !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+
+    .donate-btn:hover {
+      background-color: #f9f9f9;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-color: #ccc;
+    }
+
+    .paypal-icon {
+        height: 14px;
+        width: auto;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div class="header">
+    <div class="header-branding">
+      <img src="skeletro_white.png" alt=""> skeletro
+    </div>
+    <div class="header-desc">
+      Capture backgrounds from public Power BI dashboards.
+    </div>
+  </div>
+  
+  <div class="container">
+    
+    <div class="section-title">Visuals</div>
+    
+    <div class="card">
+      <button id="btnExtractBackground">
+        
+        <div class="btn-image">
+          <img src="Template_Verde.png" alt="Icon" class="img-normal">
+          <img src="Template_Branco.png" alt="Icon" class="img-hover">
+        </div>
+        
+        <div class="btn-content">
+            <div class="btn-title">Download Background</div>
+            
+            <div class="btn-desc">Get the wallpaper image from this page</div>
+            
+            <div class="btn-warning">
+                <strong>Important:</strong><br>
+                • You must navigate to each page to download its background.<br>
+                • If no background is applied, only available SVGs will be downloaded.
+            </div>
+        </div>
+        
+        <div class="status-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+
+      </button>
+    </div>
+
+    <div class="footer">
+      <span>Version 1.0 - 12.2025</span>
+      
+      <a href="mailto:skeletroapp@gmail.com" class="email-link">skeletroapp@gmail.com</a>
+      
+      <div class="donate-text">Support our work with a small donation.</div>
+      
+      <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=rodrigosantos2007@gmail.com&item_name=Support+Skeletro+Development&currency_code=BRL" target="_blank" class="donate-btn">
+        <img src="paypal.png" alt="P" class="paypal-icon">
+        Donate with PayPal
+      </a>
+    </div>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

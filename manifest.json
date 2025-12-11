@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Skeletro",
+  "version": "1.0",
+  "description": "Download the original background images of public Power BI reports with one click.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://*.powerbi.com/*",
+    "https://*.microsoft.com/*",
+    "https://*.analysis.windows.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Abrir Skeletro",
+    "default_icon": {
+      "128": "skeletro_white.png"
+    }
+  },
+  "icons": {
+    "16": "skeletro_white.png",
+    "48": "skeletro_white.png",
+    "128": "skeletro_white.png"
+  }
+}
